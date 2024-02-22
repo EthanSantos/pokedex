@@ -6,14 +6,17 @@ const Pokemon = ({ pokemon }) => {
     const [pokemonImage, setPokemonImage] = useState("")
     const [pokeIndex, setPokeIndex] = useState()
     const [averageColor, setAverageColor] = useState("")
+    const [pokemonInfo, setPokemonInfo] = useState("")
+    const [showData, setShowData] = useState(false);
 
     useEffect(() => {
         let cancel
         axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`, { // get the image url for the pokemon
             cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(res => {
-            setPokemonImage(res.data.sprites.front_default) // set pokemon image to pokemonImage
+            setPokemonImage(res.data.sprites.other.dream_world.front_default) // set pokemon image to pokemonImage
             setPokeIndex(res.data.id) // set pokemon id
+            setPokemonInfo(res.data) // get data of pokemon
         }).catch(error => {
             if (!axios.isCancel(error)) {
                 console.error("Error fetching Pokémon:", error);
@@ -38,7 +41,7 @@ const Pokemon = ({ pokemon }) => {
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
 
             let totalR = 0, totalG = 0, totalB = 0;
-            
+
             for (let i = 0; i < imageData.length; i += 4) {
                 totalR += imageData[i];
                 totalG += imageData[i + 1];
@@ -46,24 +49,45 @@ const Pokemon = ({ pokemon }) => {
             }
 
             const numPixels = imageData.length / 4;
-            const avgR = Math.round(totalR / numPixels) + 125;
-            const avgG = Math.round(totalG / numPixels)+ 125;
-            const avgB = Math.round(totalB / numPixels)+ 125;
+            const avgR = Math.round(totalR / numPixels) + 100;
+            const avgG = Math.round(totalG / numPixels) + 100;
+            const avgB = Math.round(totalB / numPixels) + 100;
 
             const color = `rgb(${avgR}, ${avgG}, ${avgB})`;
             setAverageColor(color);
         };
     }, [pokemonImage]);
 
+    function getPokemonInfo() {
+        console.log(pokemonInfo);
+        setShowData(prevState => !prevState)
+    }
+
+    if (showData) {
+        return (
+            <div className="grid-item" style={{ backgroundColor: averageColor }}>
+                <button onClick={getPokemonInfo}>
+                <h3>Type: {pokemonInfo.types[0].type.name}</h3>
+                {pokemonInfo.stats.map(p => (
+                    <p>{p.stat.name}: {p.base_stat}</p>
+                    // turn stat into its own component
+                ))}
+                </button>
+            </div>
+        )
+    }
+
     return (
         <div className="grid-item" style={{ backgroundColor: averageColor }}>
-            <h3>{pokemon}</h3>
-            <img
-                width={150}
-                height={150}
-                src={pokemonImage}
-            />
-            #{pokeIndex}
+            <button onClick={getPokemonInfo}>
+                <h3>{pokemon}</h3>
+                <img
+                    width={175}
+                    height={175}
+                    src={pokemonImage}
+                />
+                <p>#{pokeIndex}</p>
+            </button>
         </div>
     )
 }
