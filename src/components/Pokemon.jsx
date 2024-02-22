@@ -13,7 +13,7 @@ const Pokemon = ({ pokemon }) => {
             cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(res => {
             setPokemonImage(res.data.sprites.front_default) // set pokemon image to pokemonImage
-            setPokeIndex(res.data.id)
+            setPokeIndex(res.data.id) // set pokemon id
         }).catch(error => {
             if (!axios.isCancel(error)) {
                 console.error("Error fetching Pokémon:", error);
