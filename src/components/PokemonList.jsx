@@ -6,9 +6,7 @@ const PokemonList = ({ pokemon }) => {
     return (
         <div className="container">
             {pokemon.map(p => (
-                <div className="grid-item">
-                    <Pokemon pokemon={p} />
-                </div>
+                <Pokemon pokemon={p} />
             ))}
         </div>
     )
