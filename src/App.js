@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import PokemonList from "./components/PokemonList"
 import Pagination from "./components/Pagination"
+import Header from "./components/Header"
 import axios from "axios"
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
 
   }, [currentPageUrl])
 
+
   function goToNextPage() {
     setCurrentPageUrl(nextPageUrl)
   }
@@ -38,6 +40,7 @@ function App() {
 
   return (
     <>
+      <Header/>
       <PokemonList pokemon={pokemon} />
       <Pagination 
         goToNextPage={nextPageUrl ? goToNextPage : null}
