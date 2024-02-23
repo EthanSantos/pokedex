@@ -67,9 +67,9 @@ const Pokemon = ({ pokemon }) => {
 
     if (showData) {
         return (
-            <div className="grid-item" style={{ backgroundColor: averageColor }}>
+            <div className="grid-item" style={{ backgroundColor: "#FFFEFC"}}>
                 <button onClick={getPokemonInfo}>
-                    <PokemonInfo pokemonInfo = {pokemonInfo}/>
+                    <PokemonInfo pokemonInfo = {pokemonInfo} averageColor = {averageColor}/>
                 </button>
             </div>
         )
@@ -78,13 +78,13 @@ const Pokemon = ({ pokemon }) => {
     return (
         <div className="grid-item" style={{ backgroundColor: averageColor }}>
             <button onClick={getPokemonInfo}>
-                <h3>{pokemon}</h3>
+                <h3 className = "title">{pokemon}</h3>
                 <img
-                    width={125}
-                    height={125}
+                    width={250}
+                    height={250}
                     src={pokemonImage}
                 />
-                <p>#{pokeIndex}</p>
+                <p className = "index">#{pokeIndex}</p>
             </button>
         </div>
     )

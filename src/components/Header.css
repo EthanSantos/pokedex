@@ -8,11 +8,7 @@ h1 {
     font-size: 35px;
     padding: 10px;
     font-weight: 600;
-    color: #fff;
-    text-shadow:
-        1px 5px 10px rgba(16, 16, 16, 0.4),
-        1px 10px 30px rgba(16, 16, 16, 0.3),
-        1px 15px 50px rgba(16, 16, 16, 0.2);
+    color: #0a0b13;
 }
 
 body {

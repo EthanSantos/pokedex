@@ -2,25 +2,36 @@
 .bar-container {
     width: 100%;
     background-color: #ddd;
-    margin-left: auto;
     z-index: 1;
+    border-radius: 5px;
+    margin-bottom: -10px;
 }
 
 .stat-container{
-    
+    width: 100%;
+    font-size: 20px
 }
 
-.stat-container p {
-    margin-left: auto; /* Align text to the right */
-    text-align: left; /* Align text within the paragraph to the right */
+.type{
+    font-size: 30px;
+    position: absolute; /* Set position to absolute */
+    top: 0; /* Position at the top of the container */
+    text-align: center; /* Align text in the center horizontally */
+    color: black;
+}
+
+.stat-container p{
+    text-align: left;
+    position:relative; 
+    color: black;
+    top: 10px;
 }
 
 .skills {
     text-align: right;
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-right: 5px;
+    padding-right: 10px;
     color: white;
-    background-color: #04AA6D;
+    border-radius: 5px;
 }
-
