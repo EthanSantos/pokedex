@@ -1,7 +1,18 @@
+
 .bar-container {
-    position: absolute;
-    width: 90%;
+    width: 100%;
     background-color: #ddd;
+    margin-left: auto;
+    z-index: 1;
+}
+
+.stat-container{
+    
+}
+
+.stat-container p {
+    margin-left: auto; /* Align text to the right */
+    text-align: left; /* Align text within the paragraph to the right */
 }
 
 .skills {
@@ -12,3 +23,4 @@
     color: white;
     background-color: #04AA6D;
 }
+

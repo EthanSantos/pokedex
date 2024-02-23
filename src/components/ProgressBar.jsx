@@ -3,8 +3,8 @@ import './ProgressBar.css';
 
 const ProgressBar = ({ statName, baseStat }) => {
     return (
-        <div>
-            <p>{statName}</p>
+        <div className = "stat-container">
+            <p>{statName}:</p>
             <div className="bar-container">
                 <div className="skills" style={{width: baseStat <= 100 ? baseStat + "%" : "100%"}}>
                     {baseStat}
