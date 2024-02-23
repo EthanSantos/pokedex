@@ -1,0 +1,14 @@
+.bar-container {
+    position: absolute;
+    width: 90%;
+    background-color: #ddd;
+}
+
+.skills {
+    text-align: right;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    color: white;
+    background-color: #04AA6D;
+}

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import axios from "axios"
 
+import PokemonInfo from "./PokemonInfo"
+
 const Pokemon = ({ pokemon }) => {
 
     const [pokemonImage, setPokemonImage] = useState("")
@@ -67,11 +69,7 @@ const Pokemon = ({ pokemon }) => {
         return (
             <div className="grid-item" style={{ backgroundColor: averageColor }}>
                 <button onClick={getPokemonInfo}>
-                <h3>Type: {pokemonInfo.types[0].type.name}</h3>
-                {pokemonInfo.stats.map(p => (
-                    <p>{p.stat.name}: {p.base_stat}</p>
-                    // turn stat into its own component
-                ))}
+                    <PokemonInfo pokemonInfo = {pokemonInfo}/>
                 </button>
             </div>
         )
@@ -82,8 +80,8 @@ const Pokemon = ({ pokemon }) => {
             <button onClick={getPokemonInfo}>
                 <h3>{pokemon}</h3>
                 <img
-                    width={175}
-                    height={175}
+                    width={125}
+                    height={125}
                     src={pokemonImage}
                 />
                 <p>#{pokeIndex}</p>
